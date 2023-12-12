@@ -5,8 +5,11 @@
 #include "config.h"
 
 #include "screen_menu.h"
+#include "screen_gameover.h"
+#include "globalgamestate.h"
 
-int globalgamestate = 0;
+
+enum states globalgamestate = menu;
 
 int main() {
     // Raylib initialization
@@ -31,16 +34,16 @@ int main() {
         //
         if (IsKeyReleased(KEY_W))
         {
-            globalgamestate = 0;
+            globalgamestate = menu;
         }
 
         if (IsKeyReleased(KEY_E)) {
-            globalgamestate = 1;
+            globalgamestate = game;
         }
 
         if (IsKeyReleased(KEY_R))
         {
-            globalgamestate = 2;
+            globalgamestate = gameover;
         }
         // ...
         // ...
@@ -53,16 +56,16 @@ int main() {
 
             switch (globalgamestate)
             {
-                case 0 :
+                case menu :
                     DrawText("Das ist der Menü Screen State", 10, 10, 30, LIGHTGRAY);
                     break;
 
-                case 1 :
+                case game :
                     DrawText("Das ist der Game Screen State", 10, 10, 30, LIGHTGRAY);
                     break;
 
-                case 2 :
-                    DrawText("Das ist der Game Over Screen State", 10, 10, 30, LIGHTGRAY);
+                case gameover :
+                    screen_gameover();
                     break;
 
                 default:
