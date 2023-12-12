@@ -23,7 +23,7 @@ Use CMake or a CMake compatible development environment to build a minimalistic 
 The project name and version number can be customized in the `src/CMakeLists.txt` file. By default, the project name is 'game':
 
 ```
-project(game VERSION 0.1 LANGUAGES CXX)
+project(SubbaGame VERSION 0.1 LANGUAGES CXX)
 ```
 
 ### Change the window size and switch to fullscreen

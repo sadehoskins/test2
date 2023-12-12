@@ -4,6 +4,10 @@
 
 #include "config.h"
 
+#include "screen_menu.h"
+
+int globalgamestate = 0;
+
 int main() {
     // Raylib initialization
     // Project name, screen size, fullscreen mode etc. can be specified in the config.h.in file
@@ -23,6 +27,21 @@ int main() {
     while (!WindowShouldClose()) // Detect window close button or ESC key
     {
         // Updates that are made by frame are coded here
+        //
+        //
+        if (IsKeyReleased(KEY_W))
+        {
+            globalgamestate = 0;
+        }
+
+        if (IsKeyReleased(KEY_E)) {
+            globalgamestate = 1;
+        }
+
+        if (IsKeyReleased(KEY_R))
+        {
+            globalgamestate = 2;
+        }
         // ...
         // ...
 
@@ -31,8 +50,24 @@ int main() {
             // ...
             // ...
             ClearBackground(WHITE);
-            DrawText("Hello, world!", 10, 10, 30, LIGHTGRAY);
-            DrawTexture(myTexture, 10, 100, WHITE);
+
+            switch (globalgamestate)
+            {
+                case 0 :
+                    DrawText("Das ist der Menü Screen State", 10, 10, 30, LIGHTGRAY);
+                    break;
+
+                case 1 :
+                    DrawText("Das ist der Game Screen State", 10, 10, 30, LIGHTGRAY);
+                    break;
+
+                case 2 :
+                    DrawText("Das ist der Game Over Screen State", 10, 10, 30, LIGHTGRAY);
+                    break;
+
+                default:
+                    break;
+            }
 
         EndDrawing();
     } // Main game loop end
