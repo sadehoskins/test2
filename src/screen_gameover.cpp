@@ -5,14 +5,13 @@
 #include "screen_menu.h"
 #include "screen_gameover.h"
 #include "globalgamestate.h"
-#include "screen_game.h"
 
 extern enum states globalgamestate;
 
-void screen_game() {
-    DrawText("Das ist der Game Screen State", 10, 10, 30, LIGHTGRAY);
-    if (IsKeyReleased(KEY_H))
+void screen_gameover() {
+    DrawText("Das ist der Game Over Screen State", 10, 10, 30, LIGHTGRAY);
+    if (IsKeyReleased(KEY_SPACE))
     {
-        globalgamestate = gameover;
+        globalgamestate = menu;
     }
 }
